@@ -13,5 +13,27 @@ public class ListNode {
 		}
 		System.out.println(sb.toString());
 	}
+	
+	public static ListNode reverse(ListNode head) {
+		ListNode prev = null, next = null;
+		while (head != null) {
+			next = head.next;
+			head.next = prev;
+			prev = head;
+			head = next;
+		}
+		return prev;
+	}
+	
+	public static ListNode reverse(ListNode head, ListNode tail) {
+		ListNode prev = null, next = null;
+		while (head != tail) {
+			next = head.next;
+			head.next = prev;
+			prev = head;
+			head = next;
+		}
+		return prev;
+	}
 }
 
