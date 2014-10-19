@@ -44,22 +44,11 @@ public class ReverseNodesInKGroup {
     			break;
     		
     		// reverse [head, tail)
-    		prev.next = reverse(head, tail);
+    		prev.next = ListNode.reverse(head, tail);
     		head.next = tail;
     		prev = head;
     		head = tail;
     	}
     	return dummy.next;
     }   
-    
-    private ListNode reverse(ListNode head, ListNode tail) {
-    	ListNode prev = null, curr = head, next;
-    	while (curr != tail) {
-    		next = curr.next;
-    		curr.next = prev;
-    		prev = curr;
-    		curr = next;
-    	}
-    	return prev;
-    }
 }

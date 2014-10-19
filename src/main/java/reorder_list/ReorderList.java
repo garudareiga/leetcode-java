@@ -31,8 +31,8 @@ public class ReorderList {
         // Separate the first half and second half
         prev.next = null;
         // Reverse second half
-        ListNode first = head, second = slow;
-        second = ListNode.reverse(second);
+        ListNode first = head;
+        ListNode second = ListNode.reverse(slow);
         // Connect two portions together
         while (first.next != null) {
         	ListNode next = first.next;

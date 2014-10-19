@@ -21,19 +21,18 @@ public class RotateList {
     		return head;
   	
     	int count = 1;
-    	ListNode curr = head;
-    	while (curr.next != null) {
-    		curr = curr.next; count++;
+    	ListNode tail = head;
+    	while (tail.next != null) {
+    		count++; tail = tail.next; 
     	}
     	
     	n = count - n % count;
-    	curr.next = head; // connect head & tail to form a circle
-    	for (int i = 0; i < n; i++) { // curr points to tail right now
-    		curr = curr.next;
+    	tail.next = head; // connect head & tail to form a circle
+    	for (int i = 0; i < n; i++) {
+    		tail = tail.next;
     	}
-    	System.out.println(curr.val);
-    	head = curr.next;
-    	curr.next = null;
+    	head = tail.next;
+    	tail.next = null;
     	return head;
     }       
 }
