@@ -1,6 +1,5 @@
 package reverse_linked_list_2;
 
-import java.util.*;
 import util.ListNode;
 
 /**
@@ -27,19 +26,12 @@ public class ReverseLinkedList2 {
     	ListNode dummy = new ListNode(0);
     	dummy.next = head;
     	
-    	ListNode prev_mnd = dummy;
-    	for (int i = 0; i < m - 1; i++) {
-    		prev_mnd = prev_mnd.next;
+    	ListNode prev_m = dummy, curr_n = dummy;
+    	for (int i = 1; i <= n; i++) {
+    		if (i <= m - 1) prev_m = prev_m.next;
+    		curr_n = curr_n.next;
     	}
-    	
-    	ListNode prev = prev_mnd.next, curr = prev.next;
-    	for (int i = m; i < n; i++) {
-    		prev.next = curr.next;
-    		curr.next = prev_mnd.next;
-    		prev_mnd.next = curr;
-    		curr = prev.next;
-    	}
-    	
+    	prev_m.next = ListNode.reverse(prev_m.next, curr_n.next);
     	return dummy.next;
     }
 }

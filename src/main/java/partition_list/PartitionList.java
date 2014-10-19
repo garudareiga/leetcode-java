@@ -25,19 +25,19 @@ public class PartitionList {
     		return head;
     	ListNode dummy_1 = new ListNode(0);
     	ListNode dummy_2 = new ListNode(0);
-    	ListNode curr_1 = dummy_1, curr_2 = dummy_2;
+    	ListNode p1 = dummy_1, p2 = dummy_2;
     	while (head != null) {
     		if (head.val < x) {
-    			curr_1.next = head;
-    			curr_1 = head;
+    			p1.next = head;
+    			p1 = head;
     		} else {
-    			curr_2.next = head;
-    			curr_2 = head;
+    			p2.next = head;
+    			p2 = head;
     		}
     		head = head.next;
     	}
-    	curr_1.next = dummy_2.next;
-    	curr_2.next = null;		// very importance !!!
+    	p1.next = dummy_2.next;
+    	p2.next = null;		// very importance !!!
     	return dummy_1.next;
     }	
 }

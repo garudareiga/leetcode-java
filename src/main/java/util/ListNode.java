@@ -15,6 +15,7 @@ public class ListNode {
 	}
 	
 	public static ListNode reverse(ListNode head) {
+		// reverse [head, null)
 		ListNode prev = null, next = null;
 		while (head != null) {
 			next = head.next;
@@ -26,13 +27,15 @@ public class ListNode {
 	}
 	
 	public static ListNode reverse(ListNode head, ListNode tail) {
-		ListNode prev = null, next = null;
-		while (head != tail) {
-			next = head.next;
-			head.next = prev;
-			prev = head;
-			head = next;
+		// reverse [head, tail)
+		ListNode curr = head, prev = null, next = null;
+		while (curr != tail) {
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
 		}
+		head.next = tail;
 		return prev;
 	}
 }

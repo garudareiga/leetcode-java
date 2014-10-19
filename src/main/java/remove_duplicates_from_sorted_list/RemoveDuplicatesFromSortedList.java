@@ -21,15 +21,15 @@ public class RemoveDuplicatesFromSortedList {
     	 */
     	if (head == null || head.next == null)
     		return head;
-    	ListNode dummyNode = new ListNode(Integer.MAX_VALUE), curr = dummyNode;
+    	ListNode dummy = new ListNode(Integer.MAX_VALUE), prev = dummy;
     	while (head != null) {
-    		if (head.val != curr.val) {
-    			curr.next = head;
-    			curr = head;    			
+    		if (head.val != prev.val) {
+    			prev.next = head;
+    			prev = head;    			
     		}
     		head = head.next;
     	}
-    	curr.next = null;
-    	return dummyNode.next;
+    	prev.next = null;	// important !!!
+    	return dummy.next;
     }
 }
