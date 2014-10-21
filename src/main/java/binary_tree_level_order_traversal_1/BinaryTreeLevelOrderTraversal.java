@@ -34,10 +34,10 @@ public class BinaryTreeLevelOrderTraversal {
         Queue<TreeNode> curr = new LinkedList<TreeNode>(),
         				next = new LinkedList<TreeNode>(),
         				temp;
-        ArrayList<Integer> level = new ArrayList<Integer>();
         
         curr.add(root);
         while (!curr.isEmpty()) {
+        	ArrayList<Integer> level = new ArrayList<Integer>();
         	while (!curr.isEmpty()) {
             	TreeNode n = curr.poll();
             	level.add(n.val);
@@ -45,7 +45,6 @@ public class BinaryTreeLevelOrderTraversal {
             	if (n.right != null) next.add(n.right);
         	}
         	result.add(level);
-        	level.clear();
     		temp = curr;
     		curr = next;
     		next = temp;
