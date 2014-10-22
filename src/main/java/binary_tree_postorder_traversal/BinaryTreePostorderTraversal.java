@@ -12,8 +12,8 @@ import util.TreeNode;
  */
 
 public class BinaryTreePostorderTraversal {    
-    public ArrayList<Integer> postorderTraversal(TreeNode root) {
-        ArrayList<Integer> result = new ArrayList<Integer>();
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<Integer>();
         if (root == null) return result;
         Stack<TreeNode> s = new Stack<TreeNode>();
         TreeNode curr = root, prev;
@@ -25,10 +25,12 @@ public class BinaryTreePostorderTraversal {
         	prev = null;
         	while (!s.isEmpty()) {
         		curr = s.pop();
-        		if (curr.right == prev) {	// 1. right doesn't exist 2. second visit
-        			s.push(curr.right);
+        		// 1. right branch doesn't exist 2. already visited
+        		if (curr.right == prev) {	
+        			result.add(curr.val);
         			prev = curr;
         		} else {
+        			// not visited, need push into stack again
         			s.push(curr);
         			curr = curr.right;
         			break;
