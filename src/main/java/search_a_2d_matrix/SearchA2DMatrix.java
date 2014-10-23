@@ -26,6 +26,16 @@ public class SearchA2DMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {
     	if (matrix.length == 0 || matrix[0].length == 0)
     		return false;
+    	int rnum = matrix.length, cnum = matrix[0].length;
+    	int l = 0, r = rnum*cnum - 1;
+    	while (l <= r) {
+    		int m = (l + r)/2;
+    		int row = m/cnum, col = m%cnum;
+    		if (target == matrix[row][col]) return true;
+    		else if (target < matrix[row][col]) r = m - 1;
+    		else l = m + 1;
+    	}
+    	return false;
     }
     
     public boolean searchMatrixRecursive(int[][] matrix, int target) {
