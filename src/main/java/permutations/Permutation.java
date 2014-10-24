@@ -14,7 +14,6 @@ package permutations;
 import java.util.*;
 
 public class Permutation {
-	
     public ArrayList<ArrayList<Integer>> permute(int[] num) {
     	ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         permute(num, 0, result);
@@ -38,5 +37,4 @@ public class Permutation {
     protected void swap(int[] num, int i, int j) {
     	int tmp = num[i]; num[i] = num[j]; num[j] = tmp;
     }
-
 }

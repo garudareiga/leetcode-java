@@ -37,21 +37,6 @@ public class SortList {
         right = mergeSortList(head.next, num - num/2);
         head.next = null;
         left = mergeSortList(left, num/2);
-        return merge(left, right);
-    }
-    
-    public ListNode merge(ListNode left, ListNode right) {
-    	ListNode dummy = new ListNode(0);
-    	ListNode p = dummy;
-    	while (left != null && right != null) {
-    		if (left.val < right.val) {
-    			p.next = left; left = left.next;
-    		} else {
-    			p.next = right; right = right.next;
-    		}
-    		p = p.next;
-    	}
-    	p.next = left != null ? left : right;
-    	return dummy.next;
+        return ListNode.merge(left, right);
     }
 }
