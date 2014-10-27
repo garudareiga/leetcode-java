@@ -33,6 +33,10 @@ public class TwoSum {
 	}
 	
     public int[] twoSum(int[] numbers, int target) {
+        /*
+         * Time complexity: O(nlog(n))
+         * Space complexity: O(1)
+         */
         ArrayList<NumObj> numList = new ArrayList<NumObj>();
         for (int i = 0; i < numbers.length; i++) {
         	numList.add(new NumObj(numbers[i], i + 1));
@@ -56,6 +60,23 @@ public class TwoSum {
         		}
         		break;
         	}
+        }
+        return result;
+    }
+    
+    public int[] twoSumHash(int[] numbers, int target) {
+        int[] result = new int[2];
+        if (numbers.length == 0) return result;
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (map.containsKey(numbers[i])) {
+                int j = map.get(numbers[i]);
+                result[0] = j + 1;
+                result[1] = i + 1;
+                break;
+            } else {
+                map.put(target - numbers[i], i);
+            }
         }
         return result;
     }
