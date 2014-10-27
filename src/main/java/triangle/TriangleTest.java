@@ -5,11 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import java.util.*;
 
-public class SolutionTest {
+public class TriangleTest {
 
 	@Test
 	public void test() {
-		Solution sol = new Solution();
+		Triangle sol = new Triangle();
 		List<List<Integer>> triangle = new ArrayList<List<Integer>>();
 		triangle.add(new ArrayList<Integer>(Arrays.asList(2)));
 		triangle.add(new ArrayList<Integer>(Arrays.asList(3,4)));

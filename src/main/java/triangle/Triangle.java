@@ -1,5 +1,7 @@
 package triangle;
 
+import java.util.*;
+
 /**
  * 
  * @author raychen
@@ -21,9 +23,7 @@ package triangle;
  * the total number of rows in the triangle.
  */
 
-import java.util.*;
-
-public class Solution {
+public class Triangle {
 	public int minimumTotal(List<List<Integer>> triangle) {
 		if (triangle.isEmpty() || triangle.get(0).isEmpty()) return 0;
 		int[] minPathSum = new int[triangle.get(triangle.size() - 1).size()];
