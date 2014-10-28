@@ -37,4 +37,13 @@ public class MaximalRectangle {
         }
         return maxArea;
     }
+    
+    public int maximalRectangle_2(char[][] matrix) {
+        /*
+         * Dynamic programming, for each bottom-right corner of rectangle
+         * Better solution
+         * Time Complexity: O(N*N*N) -> O(N*N)
+         */
+    	return 0;
+    }
 }
