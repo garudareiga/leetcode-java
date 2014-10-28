@@ -50,7 +50,7 @@ public class WordSearch {
     			exist(r - 1, c, p + 1, board, word, visited) ||
     			exist(r, c + 1, p + 1, board, word, visited) ||
     			exist(r, c - 1, p + 1, board, word, visited);
-    	visited[r][c] = false;	// Reset visited
+    	visited[r][c] = false;	// Reset visited !!!
     	return ret;
     }
 }
