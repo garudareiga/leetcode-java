@@ -33,12 +33,11 @@ public class CopyListWithRandomPointer {
     	// Seperate two lists again !!!
     	RandomListNode dummy = new RandomListNode(0);
     	RandomListNode prev = dummy;
-    	for (RandomListNode curr = head; curr != null; ) {
+    	for (RandomListNode curr = head; curr != null; curr = curr.next) {
     		prev.next = curr.next;
     		prev = curr.next;
-    		curr = curr.next.next;
+    		curr.next = curr.next.next;
     	}
-    	prev.next = null;
     	return dummy.next;
     }
 }

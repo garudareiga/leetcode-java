@@ -10,7 +10,7 @@ package longest_palindromic_substring;
  *
  */
 
-public class LongestPalindromeSubstring {
+public class LongestPalindromicSubstring {
     public String longestPalindrome(String s) {
     	/* 
     	 * Time complexity: O(n^2)
@@ -22,29 +22,21 @@ public class LongestPalindromeSubstring {
     	 * 				s[l] = s[r] and p{l + 1, r - 1} is true, r > l + 1
     	 * 
     	 */
-    	if (s.isEmpty())
-    		return null;
-    	int len = s.length(), pl = 0, pr = 0;
+    	if (s.isEmpty()) return null;
+    	int len = s.length(), lp = 0, rp = 0;
     	boolean[][] p = new boolean[len][len];
-    	for (int r = 1; r < len; r++) {
+    	for (int r = 0; r < len; r++) {
     		for (int l = 0; l <= r; l++) {
-    			if (r == l) p[r][l] = true;
+    			if (r == l) p[l][r] = true;
     			else if (r == l + 1 && s.charAt(r) == s.charAt(l)) {
 					p[l][r] = true;
-					if (pl == pr) {
-						pl = l; pr = r;
-					}
-    				
-    			} else if (s.charAt(l) == s.charAt(r)) {
-    				if (p[l + 1][r - 1] == true) {
+					if (lp == rp) { lp = l; rp = r; }   				
+    			} else if (s.charAt(l) == s.charAt(r) && p[l + 1][r - 1]) {
     					p[l][r] = true;
-    					if (r - l > pr - pl) {
-    						pl = l; pr = r;
-    					}
-    				}
+    					if (r - l > rp - lp) { lp = l; rp = r; }
     			}
     		}
     	}
-    	return s.substring(pl, pr + 1);
+    	return s.substring(lp, rp + 1);
     }
 }

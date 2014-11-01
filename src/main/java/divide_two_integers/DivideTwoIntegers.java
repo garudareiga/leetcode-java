@@ -12,10 +12,7 @@ public class DivideTwoIntegers {
     public int divide(int dividend, int divisor) {
     	long a = Math.abs((long)dividend);
     	long b = Math.abs((long)divisor);
-    	boolean negative = false;
-    	if (dividend < 0) negative = !negative;
-    	if (divisor < 0) negative = !negative;
-
+    	boolean negative = ((dividend ^ divisor) < 0);
     	int result = 0;
     	while (a >= b) {
     		long c = b;

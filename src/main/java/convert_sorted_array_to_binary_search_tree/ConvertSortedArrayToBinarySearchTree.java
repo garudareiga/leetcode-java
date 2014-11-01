@@ -1,4 +1,4 @@
-package convert_sorted_array_to_binary_search_tree.copy;
+package convert_sorted_array_to_binary_search_tree;
 
 import util.TreeNode;
 
@@ -16,12 +16,12 @@ public class ConvertSortedArrayToBinarySearchTree {
     	return sortedArrayToBST(num, 0, num.length - 1);
     }
     
-    public TreeNode sortedArrayToBST(int[] num, int start, int end) {
-    	if (start > end) return null;
-    	int m = (start + end)/2;
+    public TreeNode sortedArrayToBST(int[] num, int l, int r) {
+    	if (l > r) return null;
+    	int m = (l + r)/2;
     	TreeNode n = new TreeNode(num[m]);
-    	n.left = sortedArrayToBST(num, start, m - 1);
-    	n.right = sortedArrayToBST(num, m + 1, end);
+    	n.left = sortedArrayToBST(num, l, m - 1);
+    	n.right = sortedArrayToBST(num, m + 1, r);
     	return n;
     }
 }
