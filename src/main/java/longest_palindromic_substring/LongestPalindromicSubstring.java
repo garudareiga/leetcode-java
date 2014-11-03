@@ -39,4 +39,27 @@ public class LongestPalindromicSubstring {
     	}
     	return s.substring(lp, rp + 1);
     }
+    
+    public String longestPalindrome_2(String s) {
+        /* 
+         * Time complexity: O(n^2)
+         * Space complextiy: O(1)
+         */
+        if (s.isEmpty()) return null;
+        int len = s.length(), l, r, lp = 0, rp = 0;
+        // expand from the center c: O(2*N)
+        for (int c = 0; c < len; c++) {
+            // If the size of palindrome is odd
+            for (l = c, r = c; l >= 0 && r < len; l--, r++)
+                if (s.charAt(l) != s.charAt(r))
+                    break;
+            if (r - l - 2 > rp - lp) { lp = l + 1; rp = r - 1; }
+            // If the size of palindrome is even
+            for (l = c, r = c + 1; l >= 0 && r < len; l--, r++)
+                if (s.charAt(l) != s.charAt(r))
+                    break;
+            if (r - l - 2 > rp - lp) { lp = l + 1; rp = r - 1; }
+        }
+        return s.substring(lp, rp + 1);
+    }
 }

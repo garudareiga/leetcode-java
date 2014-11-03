@@ -28,8 +28,8 @@ package regular_expression_matching;
 
 public class RegularExpressionMatching {
     public boolean isMatch(String s, String p) {
-    	//return isMatch(s, 0, p, 0);
-        return isMatchDP(s, p);
+    	return isMatch(s, 0, p, 0);
+        //return isMatchDP(s, p);
     }
     
     public boolean isMatch(String s, int is, String p, int ip) {
@@ -44,10 +44,8 @@ public class RegularExpressionMatching {
         if (plen - ip >= 2 && p.charAt(ip + 1) == '*') {
             // The next sub-pattern has '*'
             if (isMatch(s, is, p, ip + 2)) return true;
-            if (s.charAt(is) == p.charAt(ip) || p.charAt(ip) == '.')
-                return isMatch(s, is + 1, p, ip); 
-            else
-                return false;
+            if (s.charAt(is) == p.charAt(ip) || p.charAt(ip) == '.') return isMatch(s, is + 1, p, ip); 
+            return false;
         } else {
             // The next sub-pattern doesn't have '*'
             return (s.charAt(is) == p.charAt(ip) || p.charAt(ip) == '.') && isMatch(s, is + 1, p, ip + 1);
