@@ -18,6 +18,39 @@ package distinct_subsequences;
 
 public class DistinctSubsequences {
 	public int numDistinct(String S, String T) {
-        return 0;
+        return numDistinctDP(S, T);
+        //return numDistinct(S, 0, T, 0);
     }
+	
+	private int numDistinct(String s, int is, String t, int it) {
+	    /*
+	     * Time Limit Exceeded
+	     */
+	    if (it == t.length()) return 1;
+	    if (s.length() - is < t.length() - it) return 0;
+	    if (s.length() - is == t.length() - it) 
+	        return s.substring(is).equals(t.substring(it)) ? 1 : 0;
+	    return numDistinct(s, is + 1, t, it) + 
+	            (s.charAt(is) == t.charAt(it) ? numDistinct(s, is + 1, t, it + 1) : 0);
+	}
+	
+	private int numDistinctDP(String s, String t) {
+        /*
+         * Dynamic Programming
+         */
+	    int ls = s.length(), lt = t.length();
+	    int[][] array = new int[ls + 1][lt + 1];
+	    array[0][0] = 1;
+	    for (int i = 1; i <= ls; i++) array[i][0] = 1;
+	    for (int i = 1; i <= lt; i++) array[0][i] = 0;
+	    for (int i = 1; i <= ls; i++) {
+	        for (int j = 1; j <= lt && j <= i; j++) {
+	            if (i == j) 
+	                array[i][j] = s.substring(0, i).equals(t.substring(0, j)) ? 1 : 0;
+	            else
+	                array[i][j] = array[i - 1][j] + (s.charAt(i - 1) == t.charAt(j - 1) ? array[i - 1][j - 1] : 0);
+	        }
+	    }
+	    return array[ls][lt];
+	}
 }

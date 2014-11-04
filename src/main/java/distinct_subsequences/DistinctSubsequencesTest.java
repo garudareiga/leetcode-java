@@ -7,8 +7,14 @@ import org.junit.Test;
 public class DistinctSubsequencesTest {
 
 	@Test
-	public void testNumDistinct() {
-		fail("Not yet implemented");
+	public void test1() {
+		DistinctSubsequences sol = new DistinctSubsequences();
+		assertEquals(3, sol.numDistinct("rabbbit", "rabbit"));
 	}
 
+   @Test
+    public void test2() {
+        DistinctSubsequences sol = new DistinctSubsequences();
+        assertEquals(3, sol.numDistinct("ccc", "c"));
+    }
 }

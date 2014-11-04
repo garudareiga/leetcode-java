@@ -3,7 +3,7 @@ package binary_tree_maximum_path_sum;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import binary_tree_maximum_path_sum.BinaryTreeMaximumPathSum.TreeNode;
+import util.TreeNode;
 
 public class BinaryTreeMaximumPathSumTest {
 

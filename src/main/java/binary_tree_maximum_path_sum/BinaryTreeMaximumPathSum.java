@@ -1,5 +1,7 @@
 package binary_tree_maximum_path_sum;
 
+import util.TreeNode;
+
 /**
  * 
  * @author raychen
@@ -17,26 +19,18 @@ package binary_tree_maximum_path_sum;
  * Return 6.
  */
 
-public class BinaryTreeMaximumPathSum {
+public class BinaryTreeMaximumPathSum {   
     int maxSum = Integer.MIN_VALUE;
     
-    static public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; left = null; right = null; }
-    }
-    
     public int maxPathSum(TreeNode root) {
-        dfs(root);
+        maxPathSum_(root);
         return maxSum;
     }
-    
-    public int dfs(TreeNode root) { 
+    public int maxPathSum_(TreeNode root) {
         if (root == null) return 0;
-        int leftMaxSum = Math.max(0, dfs(root.left));
-        int rightMaxSum = Math.max(0, dfs(root.right));
-        maxSum = Math.max(root.val + leftMaxSum + rightMaxSum, maxSum);
-        return root.val + Math.max(leftMaxSum, rightMaxSum);
+        int lps = Math.max(0, maxPathSum_(root.left)),
+            rps = Math.max(0, maxPathSum_(root.right));
+        maxSum = Math.max(maxSum, root.val + lps + rps);
+        return root.val + Math.max(lps, rps);                 
     }
 }
