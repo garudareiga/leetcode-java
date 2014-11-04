@@ -4,10 +4,10 @@ package scramble_string;
  * 
  * @author raychen
  * 
- *  Problem:
- *  Given a string s1, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively.
+ * Problem:
+ * Given a string s1, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively.
  *  
- *  Below is one possible representation of s1 = "great":
+ * Below is one possible representation of s1 = "great":
 
  *     great
  *    /    \
@@ -46,38 +46,31 @@ package scramble_string;
 
 public class ScrambleString {
     public boolean isScramble(String s1, String s2) {
-        return isScrambleDP(s1, s2);
-    }
-    
-    boolean isScrambleDP(String s1, String s2) {
         // array[k][i][j]
-        // k => length of substring, i => start index of s1, j => start index of s2
+        // k => length of substring
+    	// i => start index of s1 
+    	// j => start index of s2
         // array[k][i][j] => s1[i, i + k] is scramble of s2[j, j + k]
-        int len = s1.length();
-        boolean[][][] result = new boolean[len][len][len];
+        int N = s1.length();
+        boolean[][][] result = new boolean[N + 1][N][N];
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < N; j++)
+                if (s1.charAt(i) == s2.charAt(j))
+                    result[1][i][j] = true;
         
-        for (int i = 0; i < len; i++) {
-            for (int j = 0; i < len; i++) {
-                if (s1.charAt(i) == s2.charAt(j)) {
-                    result[0][i][j] = true;
-                }
-            }
-        }
-        
-        for (int k = 1; k <= len; k++) {
-            for (int i = len - 1; i >= 0; i--) {
-                for (int j = len - 1; j >= 0; j--) {
-                    if (i + k >= len - 1 && j + k >= len - 1)
-                        continue;
-                    if (result[k - 1][i][j] == true && s1.charAt(i + k) == s2.charAt(j + k)) {
-                        result[k][i][j] = true;
-                        continue;
-                    }
-                }
-            }
-        }
-        
-        return result[s1.length() - 1][0][0];
-    }
-    
+        for (int n = 1; n <= N; n++) {
+        	for (int i = 0; i + n <= N; i++) {
+        		for (int j = 0; j + n <= N; j++) {
+        			for (int k = 1; k < n; k++) {
+        				if ((result[k][i][j] && result[n - k][i + k][j + k]) ||
+        					(result[k][i][j + n - k] && result[n - k][i + k][j])) {
+        					result[n][i][j] = true;
+        					break;
+        				}
+        			}
+        		}
+        	}
+        }        
+        return result[N][0][0];
+    }    
 }
