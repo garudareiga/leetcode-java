@@ -35,8 +35,6 @@ public class InsertIntervalTest {
 		
 		InsertInterval sol = new InsertInterval();
 		intervals = sol.insert(intervals, newInterval);
-		for (Interval interval : intervals)
-			System.out.println(interval.start + ", " + interval.end);
 		assertEquals(2, intervals.size());
 	}
 }

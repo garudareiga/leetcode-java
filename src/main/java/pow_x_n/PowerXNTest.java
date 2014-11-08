@@ -10,7 +10,7 @@ public class PowerXNTest {
     public void test() {
         PowerXN sol = new PowerXN();
         sol.pow(0.00001, 2147483647);
-        equals(Math.abs(-51.536 - sol.pow(-2.2, 5)) < 0.001);
+        assertTrue(Math.abs(-51.536 - sol.pow(-2.2, 5)) < 0.001);
     }
 
 }

@@ -9,6 +9,9 @@ package pow_x_n;
 
 public class PowerXN {
     public double pow(double x, int n) {
+        /*
+         * Runtime complexity: O(log(n))
+         */
     	if (n < 0) return power(1.0/x, -n);
     	else return power(x, n);
     }

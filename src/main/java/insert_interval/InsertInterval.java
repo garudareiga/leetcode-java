@@ -1,6 +1,7 @@
 package insert_interval;
 
 import java.util.*;
+
 import util.Interval;
 
 /**
@@ -21,22 +22,6 @@ import util.Interval;
 
 public class InsertInterval {	
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
-    	ListIterator<Interval> iter = intervals.listIterator();
-    	while (iter.hasNext()) {
-    		Interval current = iter.next();
-    		if (newInterval.end < current.start) {
-    			intervals.add(iter.previousIndex(), newInterval);
-    			//iter.add(newInterval);	// iter already moved to next position after next()
-    			return intervals;
-    		} else if (newInterval.start > current.end) {
-    			continue;
-    		} else {
-        		newInterval.start = Math.min(current.start, newInterval.start);
-        		newInterval.end = Math.max(current.end, newInterval.end);
-        		iter.remove();
-    		}
-    	}
-    	intervals.add(newInterval);
-      	return intervals;
+        return Interval.insert(intervals, newInterval);
     }
 }
