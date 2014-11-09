@@ -4,17 +4,18 @@ package minimum_path_sum;
  * 
  * @author raychen
  * 
- *  Problem:
-Given a m x n grid filled with non-negative numbers, find a path from top left to bottom
- right which minimizes the sum of all numbers along its path.
-
-Note: You can only move either down or right at any point in time.
+ * Problem:
+ * Given a m x n grid filled with non-negative numbers, 
+ * find a path from top left to bottom right which minimizes 
+ * the sum of all numbers along its path.
+ *
+ * Note: You can only move either down or right at any point in time.
  */
 
 public class MinimumPathSum {
     public int minPathSum(int[][] grid) {
     	/* 
-    	 * Dynamic Programming: minSum_{i, j} = max(minSum_{i-1,j}, minSum_{i,j-1})
+    	 * Dynamic Programming: minSum_{i, j} = max(minSum_{i-1,j}, minSum_{i,j-1}) + grid[i][j]
     	 */
     	if (grid.length == 0 || grid[0].length == 0) return 0;
         int nr = grid.length, nc = grid[0].length;
