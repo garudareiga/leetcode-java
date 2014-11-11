@@ -43,14 +43,9 @@ public class DistinctSubsequences {
 	    array[0][0] = 1;
 	    for (int i = 1; i <= ls; i++) array[i][0] = 1;
 	    for (int i = 1; i <= lt; i++) array[0][i] = 0;
-	    for (int i = 1; i <= ls; i++) {
-	        for (int j = 1; j <= lt && j <= i; j++) {
-	            if (i == j) 
-	                array[i][j] = s.substring(0, i).equals(t.substring(0, j)) ? 1 : 0;
-	            else
-	                array[i][j] = array[i - 1][j] + (s.charAt(i - 1) == t.charAt(j - 1) ? array[i - 1][j - 1] : 0);
-	        }
-	    }
+	    for (int i = 1; i <= ls; i++)
+	        for (int j = 1; j <= lt && j <= i; j++)
+	            array[i][j] = array[i - 1][j] + (s.charAt(i - 1) == t.charAt(j - 1) ? array[i - 1][j - 1] : 0);
 	    return array[ls][lt];
 	}
 }
