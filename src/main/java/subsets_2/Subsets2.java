@@ -27,7 +27,11 @@ import java.util.*;
  */
 
 public class Subsets2 {
-	public List<List<Integer>> subsetsWithDup(int[] S) {
+    public List<List<Integer>> subsetsWithDup(int[] S) {
+        return subsetsWithDupRecursive(S);
+    }
+    
+	public List<List<Integer>> subsetsWithDupItertive(int[] S) {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		if (S.length == 0) return result;
 		Arrays.sort(S);
@@ -45,4 +49,25 @@ public class Subsets2 {
 		}
 		return result;
 	}
+	
+	public List<List<Integer>> subsetsWithDupRecursive(int[] S) {
+	    List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if (S.length == 0) return result;
+        Arrays.sort(S);
+        Stack<Integer> stack = new Stack<Integer>();
+        subsetsWithDupRecursive(S, 0, stack, result);
+        return result;
+	}
+
+    private void subsetsWithDupRecursive(int[] S, int pos, Stack<Integer> stack,
+            List<List<Integer>> result) {
+        result.add(new ArrayList<Integer>(stack));
+        for (int i = pos; i < S.length; i++) {
+            if (i > pos && S[i] == S[i - 1]) continue;
+            stack.push(S[i]);
+            subsetsWithDupRecursive(S, i + 1, stack, result);
+            stack.pop();
+        }
+    }
+	        
 }

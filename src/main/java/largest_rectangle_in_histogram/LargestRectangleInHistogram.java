@@ -22,9 +22,8 @@ import java.util.*;
 public class LargestRectangleInHistogram {
     public int largestRectangleArea(int[] height) {
     	int[] heights = new int[height.length + 1];
-    	for (int i = 0; i < height.length; i++) {
+    	for (int i = 0; i < height.length; i++)
     		heights[i] = height[i];
-    	}
     	heights[height.length] = 0;
     	
     	int maxArea = 0;
