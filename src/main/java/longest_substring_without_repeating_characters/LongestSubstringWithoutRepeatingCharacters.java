@@ -1,5 +1,7 @@
 package longest_substring_without_repeating_characters;
 
+import java.util.*;
+
 /**
  * 
  * @author raychen
@@ -12,6 +14,14 @@ package longest_substring_without_repeating_characters;
 
 public class LongestSubstringWithoutRepeatingCharacters {
     public int lengthOfLongestSubstring(String s) {
+        return lengthOfLongestSubstring2(s);
+    }
+    
+    public int lengthOfLongestSubstringDP(String s) {
+        /*
+         * Runtime Complexity: O(n^2)
+         * Space Complexity: O(n) 
+         */
     	if (s.isEmpty()) return 0;
     	int[] result = new int[s.length()];
     	result[0] = 1;
@@ -26,5 +36,31 @@ public class LongestSubstringWithoutRepeatingCharacters {
     		maxLen = Math.max(maxLen, result[i]);
     	}
     	return maxLen;
+    }
+    
+    public int lengthOfLongestSubstring2(String s) {
+        /*
+         * Runtime Complexity: O(n)
+         * Space Complexity: O(n) 
+         */
+        int maxLen = 0;
+        HashSet<Character> hs = new HashSet<Character>();
+        int l, r, k;
+        for (l = 0, r = 0; r < s.length(); r++) {
+            char c = s.charAt(r);
+            if (hs.contains(c)) { // find duplicate
+                // update maxLen
+                maxLen = Math.max(maxLen, r - l);
+                // search for the next 'l'
+                for (k = l; k < r; k++) {
+                    if (s.charAt(k) == c) break;
+                    hs.remove(s.charAt(k));
+                }
+                l = k + 1;
+            } else 
+                hs.add(c);
+        }
+        maxLen = Math.max(maxLen, r - l);
+        return maxLen;
     }
 }

@@ -32,8 +32,8 @@ public class LongestPalindromicSubstring {
 					p[l][r] = true;
 					if (lp == rp) { lp = l; rp = r; }   				
     			} else if (s.charAt(l) == s.charAt(r) && p[l + 1][r - 1]) {
-    					p[l][r] = true;
-    					if (r - l > rp - lp) { lp = l; rp = r; }
+    				p[l][r] = true;
+    				if (r - l > rp - lp) { lp = l; rp = r; }
     			}
     		}
     	}
