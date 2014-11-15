@@ -14,37 +14,28 @@ import java.util.*;
  */
 
 public class MedianOfTwoSortedArrays {
-	/*
-	 * Testcase 5 is not working !!!
-	 */
+    /*
+     * Time Complexity: O(m + n)
+     */
     public double findMedianSortedArrays(int A[], int B[]) {
-    	int la = A.length, lb = B.length;
-    	if (la == 0 && lb == 0) return 0;
-        if (la == 0 || lb == 0) {
-        	A = la == 0 ? B : A;
-        	la = la == 0 ? lb : la;
-        	return la%2 == 1 ?
-        			A[la/2] :
-        			(A[la/2 - 1] + A[la/2])/2.0;
-        }
-        return find_median_sorted_arrays(A, 0, B, 0, (la + lb + 1)/2);
+        int alen = A.length, blen = B.length, total = alen + blen;
+        if (alen == 0 && blen == 0) return 0.0;
+        return total % 2 == 0 ?
+                (findKth(A, 0, B, 0, total/2) + findKth(A, 0, B, 0, total/2 + 1))/2.0 :
+                findKth(A, 0, B, 0, (total + 1)/2);
     }
 
-	private double find_median_sorted_arrays(int[] a, int ia, int[] b, int ib, int k) {
-	    if (ia + ib == k - 1) {
-	    	if ((a.length + b.length) % 2 == 1)
-	    		return Math.min(a[ia], b[ib]);
-	    	else 
-	    		return (a[ia] + b[ib])/2.0;
-	    }
-	    int N = (k - ia - ib);	// remove N elements from arrays
-	    if (a[ia + N/2 - 1] < b[ib + N/2 - 1]) { // remove from a 
-	    	ia = ia + N/2; 
-	    } else if (a[ia + N/2 - 1] > b[ib + N/2 - 1]) { // remove from b
-	    	ib = ib + N/2;
-	    } else {
-	    	ia = ia + N/2; ib = ib + N/2;
-	    }
-	    return find_median_sorted_arrays(a, ia, b, ib, k);
-    }   
+    private int findKth(int[] A, int ia, int[] B, int ib, int k) {
+        int alen = A.length, blen = B.length;
+        // A always has more elements left to check
+        if (alen - ia < blen - ib) return findKth(B, ib, A, ia, k);
+        if (ib == blen) return A[ia + k - 1];
+        else if (k == 1) return Math.min(A[ia], B[ib]);
+        // delete k/2 elements
+        int iia = ia + k/2,
+            iib = Math.min(ib + k - k/2, blen);
+        if (A[iia - 1] < B[iib - 1]) return findKth(A, iia, B, ib, k - (iia - ia));
+        else if (A[iia - 1] > B[iib - 1]) return findKth(A, ia, B, iib, k - (iib -ib));
+        return A[iia - 1];
+    }  
 }
