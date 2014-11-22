@@ -1,7 +1,5 @@
 package minimum_window_substring;
 
-import java.util.*;
-
 /**
  * 
  * @author raychen

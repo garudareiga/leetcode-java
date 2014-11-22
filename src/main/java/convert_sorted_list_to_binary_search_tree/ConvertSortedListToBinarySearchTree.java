@@ -12,12 +12,20 @@ import util.ListNode;
  * 
  */
 
-public class ConvertSortedListToBinarySearchTree { 
+public class ConvertSortedListToBinarySearchTree {
+    /*
+     * - Naive Solution: 
+     *   In each recursive call, we would have to traverse 
+     *   half of the list's length to find the middle element.
+     *   Time Complexity: O(NlgN)
+     *   
+     * - Best Solution:
+     */
     public TreeNode sortedListToBST(ListNode head) {
     	if (head == null) return null;
-    	ListNode runNode = head;
+    	ListNode p = head;
     	int n = 0;
-    	while (runNode != null) { n++; runNode = runNode.next; }
+    	while (p != null) { n++; p = p.next; }
     	return sortedListToBST(head, 0, n - 1);
     }
     
