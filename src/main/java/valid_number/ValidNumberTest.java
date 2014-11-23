@@ -13,8 +13,9 @@ public class ValidNumberTest {
 		assertTrue(sol.isNumber(" 0.1"));
 		assertFalse(sol.isNumber("abc"));
 		assertFalse(sol.isNumber("1 a"));
-		assertTrue(sol.isNumber("2e10"));
-		assertTrue(sol.isNumber("959440.94f"));
+		assertFalse(sol.isNumber("."));
+		//assertTrue(sol.isNumber("2e10"));
+		//assertTrue(sol.isNumber("959440.94f"));
 	}
 
 }
