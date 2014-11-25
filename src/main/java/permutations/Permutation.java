@@ -15,6 +15,10 @@ import java.util.*;
 
 public class Permutation {
     public ArrayList<ArrayList<Integer>> permute(int[] num) {
+        /*
+         * Time Complexity: O(n!)
+         * Space Complexity: O(1) 
+         */
     	ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         permute(num, 0, result);
         return result;

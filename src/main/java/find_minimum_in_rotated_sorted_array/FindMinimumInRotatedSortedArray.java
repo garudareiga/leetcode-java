@@ -27,14 +27,12 @@ public class FindMinimumInRotatedSortedArray {
     
     public int findMinIterative(int[] num) {
     	int l = 0, r = num.length - 1;
-    	while (l < r) {
+    	while (l + 1 < r) {
     		if (num[l] < num[r]) break;
     		int m = (l + r)/2;
-    		if (l == m) l++;
-    		else if (r == m) r--;
-    		else if (num[l] < num[m]) l = m; // not use m + 1
-    		else r = m; // not use m - 1
+    		if (num[l] < num[m]) l = m + 1; // left sorted, right minimum
+    		else r = m; // left minimum, right sorted
     	}
-    	return num[l];
+    	return Math.min(num[l], num[r]);
     }
 }
