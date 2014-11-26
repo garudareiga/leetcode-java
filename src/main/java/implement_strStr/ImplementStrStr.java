@@ -7,24 +7,26 @@ package implement_strStr;
  * Problem:
  * Implement strStr().
  * 
- * Returns a pointer to the first occurrence of needle in haystack, 
- * or null if needle is not part of haystack.
+ * Returns the index of the first occurrence of needle in haystack, 
+ * or -1 if needle is not part of haystack.
  * 
  */
 
 public class ImplementStrStr {
-    public String strStr(String haystack, String needle) {
+    public int strStr(String haystack, String needle) {
     	/* 
     	 * Brute-force
     	 * Time Complexity: O(n*m)
     	 */ 
-    	if (needle.isEmpty()) return haystack;
-    	for (int i = 0; i < haystack.length(); i++) {
-    		if (haystack.length() - i < needle.length())
-    			break;
-    		if (haystack.substring(i, i + needle.length()).equals(needle))
-    			return haystack.substring(i);
+    	if (haystack.isEmpty() && needle.isEmpty()) return 0;
+    	int i, j;
+    	for (i = 0; i < haystack.length(); i++) {
+    		if (haystack.length() - i < needle.length()) break;
+    		for (j = 0; j < needle.length(); j++)
+    			if (haystack.charAt(i + j) != needle.charAt(j)) 
+    				break;
+    		if (j == needle.length()) return i;
     	}
-    	return null;
+    	return -1;
     }
 }

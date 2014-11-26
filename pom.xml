@@ -13,10 +13,40 @@
 
         <!-- Test -->
         <junit.version>4.11</junit.version>
-
+        
+        <!-- Apache Commons -->
+        <commons-math3.version>3.3</commons-math3.version>
+        <commons-lang3.version>3.3</commons-lang3.version>
+        
+        <!-- Google Guava -->
+        <guava.version>18.0</guava.version>
     </properties>
     
     <dependencies>
+            <!-- Apache commons math -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>${commons-math3.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- Apache commons lang -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- Google Guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        
         <!-- Logging with SLF4J & LogBack -->
         <dependency>
             <groupId>org.slf4j</groupId>
