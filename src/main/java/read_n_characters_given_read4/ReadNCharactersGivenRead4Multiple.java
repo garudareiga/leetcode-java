@@ -19,7 +19,6 @@ public class ReadNCharactersGivenRead4Multiple extends Reader4 {
     int offset = 0;
     int size = 0;
     char[] buffer = new char[4];
-    boolean eof = false;
     
     /**
      * @param buf   Destination buffer
@@ -28,8 +27,9 @@ public class ReadNCharactersGivenRead4Multiple extends Reader4 {
      */
     public int read(char[] buf, int n) {
         int readBytes = 0;
-        while ((!eof || size > 0) && readBytes < n) {
-            if (!eof && size == 0) {
+        boolean eof = false;
+        while (!eof && readBytes < n) {
+            if (size == 0) {
                 size = read4(buffer);
                 if (size < 4) eof = true;
             }

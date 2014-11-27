@@ -62,4 +62,31 @@ public class LongestPalindromicSubstring {
         }
         return s.substring(lp, rp + 1);
     }
+    
+    public String longestPalindrome_3(String s) {
+        /* 
+         * Time complexity: O(n^2)
+         * Space complextiy: O(1)
+         */
+        if (s.isEmpty()) return null;
+        int len, l = 0, r = 0;
+        // expand from the center c: O(2*N)
+        for (int m = 0; m < s.length(); m++) {
+        	int len1 = expand(s, m, m);		// palindrome is odd
+        	int len2 = expand(s, m, m + 1); // palindrome is even
+        	len = Math.max(len1, len2);
+        	if (r - l < len) {
+        		l = m - (len - 1)/2;
+        		r = m + len/2;
+        	}
+        }
+        return s.substring(l, r + 1);
+    }
+    
+    private int expand(String s, int l, int r) {
+    	while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
+    		l--; r++;
+    	}
+    	return r - l + 1;
+    }
 }
