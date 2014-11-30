@@ -15,6 +15,10 @@ import util.TreeNode;
 
 public class ConstructBinaryTreeFromPreorderAndInorderTraversal {	
     public TreeNode buildTree(int[] preorder, int[] inorder) {
+        /*
+         * Time Complexity: O(n)
+         * Space Complexity: O(log(n))
+         */
         // preorder: M L R
         // inorder:  L M R
     	if (preorder.length == 0 || inorder.length == 0) return null;
