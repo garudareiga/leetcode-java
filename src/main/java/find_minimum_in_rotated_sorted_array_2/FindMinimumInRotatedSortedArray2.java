@@ -41,5 +41,16 @@ public class FindMinimumInRotatedSortedArray2 {
     		else r = m; // not use m - 1
     	}
     	return num[l];
+//        int l = 0, r = num.length - 1;
+//        while (l < r && num[l] > num[r]) {
+//            int m = (l + r)/2;
+//            if (num[m] == num[l]) l++;
+//            else if (num[m] == num[r]) r--;
+//            else {
+//                if (num[m] > num[l]) l = m + 1; // left sorted, right minimum
+//                else r = m; // left minimum, right sorted
+//            }
+//        }
+//        return num[l];
     }
 }

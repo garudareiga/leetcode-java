@@ -5,7 +5,7 @@ package pow_x_n;
  * @author raychen
  * Problem:
  * Implement pow(x, n)
-*/
+ */
 
 public class PowerXN {
     public double pow(double x, int n) {
@@ -22,7 +22,7 @@ public class PowerXN {
     	return n%2 == 0 ? v*v : v*v*x;
     }
     
-    public double power_iterative(double x, int n) {
+    public double powIterative1(double x, int n) {
         // Runtime Error Message:  Line 14: java.lang.NegativeArraySizeException
         // Last executed input:    0.00001, 2147483647
         // double[] result = new double[n + 1];
@@ -36,5 +36,16 @@ public class PowerXN {
             result[i] = (i % 2 == 0 ? v*v : v*v*x);
         }
         return result[n];
+    }
+    
+    public double powIterative2(double x, int n) {
+        if (n < 0) return powIterative2(1/x, -n);
+        double result = 1.0;
+        while (n > 0) {
+            if ((n & 0x1) == 1) result *= x;
+            x *= x;
+            n >>= 1;
+        }
+        return result;
     }
 }

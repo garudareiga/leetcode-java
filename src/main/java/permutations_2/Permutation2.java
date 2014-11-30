@@ -15,6 +15,10 @@ import java.util.*;
 
 public class Permutation2 {
     public ArrayList<ArrayList<Integer>> permuteUnique(int[] num) {
+        /*
+         * Runtime Complexity: O(n!)
+         * Space Complexity: O(1)
+         */
     	ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         permuteUnique(num, 0, result);
         return result;
@@ -28,7 +32,7 @@ public class Permutation2 {
     		return;
     	}
     	for (int q = p; q < num.length; q++) {
-    		if (containDuplicate(num, p, q)) continue;
+    		if (containDuplicate(num, p, q)) continue; // or we can sort first
     		swap(num, p, q);
     		permuteUnique(num, p + 1, result);
     		swap(num, p, q);

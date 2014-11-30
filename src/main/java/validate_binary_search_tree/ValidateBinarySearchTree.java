@@ -21,11 +21,9 @@ public class ValidateBinarySearchTree {
     
     protected boolean isValidBST(TreeNode root, int min, int max) {
     	if (root == null) return true;
-    	if (root.val > min &&
+    	return (root.val > min &&
     		root.val < max &&
     		isValidBST(root.left, min, root.val) &&
-    		isValidBST(root.right, root.val, max))
-    		return true;
-    	return false;
+    		isValidBST(root.right, root.val, max));
     }
 }
