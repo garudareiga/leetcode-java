@@ -31,26 +31,47 @@ public class ThreeSum {
 			return result;
 		
 		Arrays.sort(num);
-		HashSet<ArrayList<Integer>> hs = new HashSet<ArrayList<Integer>>();
-		for (int k = 0; k < num.length - 2; k++) {
-			for (int i = k + 1, j = num.length - 1; i < j; ) {
-				int sum = num[k] + num[i] + num[j];
-				if (sum < 0) {
-					i++;
-				} else if (sum > 0) {
-					j--;
-				} else {
-					ArrayList<Integer> triple = new ArrayList<Integer>();
-					triple.add(num[k]);
-					triple.add(num[i]);
-					triple.add(num[j]);
-					hs.add(triple);		
-					i++;
-					j--;
-				}
-			}
+		for (int k = 0; k < num.length; k++) {
+		    if (k > 0 && num[k] == num[k - 1]) continue;
+		    for (int i = k + 1, j = num.length - 1; i < j; ) {
+		        if (i > k + 1 && num[i] == num[i - 1]) { i++; continue; }
+		        if (j < num.length - 1 && num[j] == num[j + 1]) { j--; continue; }
+		        int sum = num[k] + num[i] + num[j];
+		        if (sum < 0) i++;
+		        else if (sum > 0) j--;
+		        else {
+                  ArrayList<Integer> triple = new ArrayList<Integer>();
+                  triple.add(num[k]);
+                  triple.add(num[i]);
+                  triple.add(num[j]);
+                  result.add(triple);     
+                  i++;
+                  j--;		            
+		        }
+		    }
 		}
-		result.addAll(hs);
 		return result;
+//		HashSet<ArrayList<Integer>> hs = new HashSet<ArrayList<Integer>>();
+//		for (int k = 0; k < num.length - 2; k++) {
+//		    if (k > 0 && num[k] == num[k - 1]) continue;
+//			for (int i = k + 1, j = num.length - 1; i < j; ) {
+//				int sum = num[k] + num[i] + num[j];
+//				if (sum < 0) {
+//					i++;
+//				} else if (sum > 0) {
+//					j--;
+//				} else {
+//					ArrayList<Integer> triple = new ArrayList<Integer>();
+//					triple.add(num[k]);
+//					triple.add(num[i]);
+//					triple.add(num[j]);
+//					hs.add(triple);		
+//					i++;
+//					j--;
+//				}
+//			}
+//		}
+//		result.addAll(hs);
+//		return result;
 	}
 }
