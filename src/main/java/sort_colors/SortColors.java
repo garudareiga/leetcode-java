@@ -26,13 +26,9 @@ public class SortColors {
     public void sortColors(int[] A) {
         int r = 0, b = A.length - 1;
         for (int i = 0; i <= b; ) {
-        	if (A[i] == 0) {
-        		swap(A, i++, r++);
-        	} else if (A[i] == 2) {
-        		swap(A, i, b--);
-        	} else {
-        		i++;
-        	}
+        	if (A[i] == 0) swap(A, i++, r++);
+        	else if (A[i] == 2) swap(A, i, b--);
+        	else i++;
         }
     }
     

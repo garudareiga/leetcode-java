@@ -30,6 +30,9 @@ import java.util.*;
 
 public class WordLadder2 {   
 	public List<List<String>> findLadders(String start, String end, HashSet<String> dict) {
+	    /*
+	     * Time Complexity: 26 * O(length of words) * O(size of dictionary)
+	     */
 		HashMap<String, ArrayList<String>> prevStrMap = new HashMap<String, ArrayList<String>>();
 		
 		dict.add(end);
@@ -49,7 +52,7 @@ public class WordLadder2 {
 		
 		List<List<String>> result = new ArrayList<List<String>>();
 		if (prevStrMap.containsKey(end)) {
-			LinkedList<String> path = new LinkedList<String>();
+			Stack<String> path = new Stack<String>();
 			path.add(end);
 			findPath(end, path, prevStrMap, result);
 		}
@@ -70,15 +73,15 @@ public class WordLadder2 {
 		}
 	}
 	
-	void findPath(String currstr, LinkedList<String> path, HashMap<String, ArrayList<String>> prevStrMap, List<List<String>> result) {
+	void findPath(String currstr, Stack<String> path, HashMap<String, ArrayList<String>> prevStrMap, List<List<String>> result) {
 		if (prevStrMap.containsKey(currstr)) {
 			for (String prevstr : prevStrMap.get(currstr)) {
-				path.addLast(prevstr);
+				path.add(prevstr);
 				findPath(prevstr, path, prevStrMap, result);
-				path.pollLast();
+				path.pop();
 			}
 		} else {
-			LinkedList<String> newPath = new LinkedList<String>(path);
+			List<String> newPath = new LinkedList<String>(path);
 			Collections.reverse(newPath);
 			result.add(newPath);
 		}

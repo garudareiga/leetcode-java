@@ -14,7 +14,7 @@ import java.util.*;
  * Each intermediate word must exist in the dictionary
  * For example,
  * 
- * Given:\
+ * Given:
  * start = "hit"
  * end = "cog"
  * dict = ["hot","dot","dog","lot","log"]
