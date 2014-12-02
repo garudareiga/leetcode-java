@@ -54,7 +54,7 @@ public class Subsets {
 		/*
 		 * Recursive solution
 		 * Time complexity: O(n^2)
-		 * Space complexity: O(1)
+		 * Space complexity: O(n)
 		 */		
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		if (S.length == 0) return result;

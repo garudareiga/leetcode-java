@@ -21,6 +21,14 @@ import java.util.*;
 
 public class PalindromePartitioning {
 	public List<List<String>> partition(String s) {
+		/*
+		 * DFS
+		 * Time Complexity: O(2^n)
+		 * Space Complexity: O(1)
+		 * 
+		 * If using dynamic programming
+		 * Time Complexity: O(n^2)
+		 */
 		List<List<String>> result = new ArrayList<List<String>>();
 		if (s.isEmpty()) return result;
 		Stack<String> curr = new Stack<String>();

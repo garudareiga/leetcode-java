@@ -15,7 +15,10 @@ import util.TreeNode;
 public class FlattenBinaryTreeToLinkedList {    
     public void flatten(TreeNode root) {
     	/*
-    	 * preorder traversal: use stack
+    	 * Preorder traversal: use stack
+    	 * 
+    	 * Time Complexity: O(n)
+    	 * Space Complexity: O(log(n))
     	 */
     	if (root == null) return;
     	Stack<TreeNode> s = new Stack<TreeNode>();

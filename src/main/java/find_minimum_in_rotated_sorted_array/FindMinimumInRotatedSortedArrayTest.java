@@ -15,6 +15,13 @@ public class FindMinimumInRotatedSortedArrayTest {
 	
 	@Test
     public void test2() {
+        int[] num = {2, 1};
+        FindMinimumInRotatedSortedArray sol = new FindMinimumInRotatedSortedArray();
+        assertEquals(1, sol.findMin(num));
+    }
+	
+	@Test
+    public void test3() {
         int[] num = {1, 2};
         FindMinimumInRotatedSortedArray sol = new FindMinimumInRotatedSortedArray();
         assertEquals(1, sol.findMin(num));

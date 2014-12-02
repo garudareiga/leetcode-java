@@ -15,14 +15,21 @@ public class SearchInsertPosition {
     public int searchInsert(int[] A, int target) {
     	int l = 0, r = A.length - 1;
     	while (l <= r) {
-    		if (target < A[l]) return l;
-    		if (target > A[r]) return r + 1;
     		int m = (l + r)/2;
-    		if (target == A[m]) return m;
+    		if (target < A[m]) r = m - 1;
     		else if (target > A[m]) l = m + 1;
-    		else r = m - 1;
+    		else return m;
     	}
-    	return 0;
+    	return l;
+//    	while (l <= r) {
+//    		if (target < A[l]) return l;
+//    		if (target > A[r]) return r + 1;
+//    		int m = (l + r)/2;
+//    		if (target == A[m]) return m;
+//    		else if (target > A[m]) l = m + 1;
+//    		else r = m - 1;
+//    	}
+//    	return 0;
     }
     
     public int searchInsert_recursive(int[] A, int target) {

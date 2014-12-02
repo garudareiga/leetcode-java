@@ -23,34 +23,29 @@ public class FindMinimumInRotatedSortedArray2 {
     	return findMinIterative(num);
     }
     
-    private int find_min(int i, int j, int[] num) {
-    	if (i > j) return Integer.MAX_VALUE;
-    	if (i == j || num[i] < num[j]) return num[i];
-    	int m = (i + j)/2;
-    	return Math.min(find_min(i, m, num), find_min(m + 1, j, num));
-    }
+//    private int find_min(int i, int j, int[] num) {
+//    	/*
+//    	 * Time Complexity: still O(n)
+//    	 */
+//    	if (i > j) return Integer.MAX_VALUE;
+//    	if (i == j || num[i] < num[j]) return num[i];
+//    	int m = (i + j)/2;
+//    	return Math.min(find_min(i, m, num), find_min(m + 1, j, num));
+//    }
     
     public int findMinIterative(int[] num) {
+    	/*
+    	 * Time Complexity: O(log(n))
+    	 */
     	int l = 0, r = num.length - 1;
     	while (l < r) {
     		if (num[l] < num[r]) break;
     		int m = (l + r)/2;
     		if (num[l] == num[m]) l++;
     		else if (num[r] == num[m]) r--;
-    		else if (num[l] < num[m]) l = m; // not use m + 1
-    		else r = m; // not use m - 1
+    		else if (num[m] > num[r]) l = m + 1; // right minimum
+    		else r = m; // left minimum
     	}
     	return num[l];
-//        int l = 0, r = num.length - 1;
-//        while (l < r && num[l] > num[r]) {
-//            int m = (l + r)/2;
-//            if (num[m] == num[l]) l++;
-//            else if (num[m] == num[r]) r--;
-//            else {
-//                if (num[m] > num[l]) l = m + 1; // left sorted, right minimum
-//                else r = m; // left minimum, right sorted
-//            }
-//        }
-//        return num[l];
     }
 }

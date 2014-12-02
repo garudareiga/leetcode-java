@@ -24,4 +24,11 @@ public class MinimumDepthOfBinaryTree {
     	return Math.min(minDepth(root.left, root.right != null), 
     			minDepth(root.right, root.left != null)) + 1;
     }   
+    
+    public int minDepthEasy(TreeNode root) {
+    	if (root == null) return 0;
+    	if (root.left == null) return minDepthEasy(root.right) + 1;
+    	if (root.right == null) return minDepthEasy(root.left) + 1;
+    	return Math.min(minDepthEasy(root.left), minDepthEasy(root.right)) + 1;
+    } 
 }

@@ -19,8 +19,7 @@ public class BalancedBinaryTree {
     }
     
     public int balancedHeight(TreeNode root) {
-    	if (root == null) 
-    		return 0;
+    	if (root == null) return 0;
     	int left = balancedHeight(root.left);
     	int right = balancedHeight(root.right);
     	if (left < 0 || right < 0 || Math.abs(left - right) > 1) return -1;	// branch pruning

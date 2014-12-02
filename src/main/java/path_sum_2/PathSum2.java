@@ -31,26 +31,30 @@ import java.util.*;
 
 public class PathSum2 {
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
+    	/*
+    	 * Time Complexity: O(n)
+    	 * Space Complexity: O(log(n))
+    	 */
     	List<List<Integer>> result = new ArrayList<List<Integer>>();
-        Stack<Integer> current = new Stack<Integer>();
-        pathSum_(root, sum, current, result);
+        Stack<Integer> stack = new Stack<Integer>();
+        pathSum_(root, sum, stack, result);
         return result;
     }
     
-    void pathSum_(TreeNode root, int sum, Stack<Integer> current, List<List<Integer>> result) {
+    void pathSum_(TreeNode root, int sum, Stack<Integer> stack, List<List<Integer>> result) {
     	if (root == null) return;
     	if (root.left == null && root.right == null) {
     		if (root.val == sum) {
-    			ArrayList<Integer> next = new ArrayList<Integer>(current);
+    			ArrayList<Integer> next = new ArrayList<Integer>(stack);
     			next.add(root.val);
     			result.add(next);
     		}
     		return;
     	}
     	
-    	current.push(root.val);
-    	pathSum_(root.left, sum - root.val, current, result);
-    	pathSum_(root.right, sum - root.val, current, result);
-    	current.pop();
+    	stack.push(root.val);
+    	pathSum_(root.left, sum - root.val, stack, result);
+    	pathSum_(root.right, sum - root.val, stack, result);
+    	stack.pop();
     }
 }

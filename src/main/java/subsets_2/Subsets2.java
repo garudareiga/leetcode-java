@@ -32,6 +32,10 @@ public class Subsets2 {
     }
     
 	public List<List<Integer>> subsetsWithDupItertive(int[] S) {
+		/*
+		 * Time Complexity: O(2^n)
+		 * Space Complexity: O(n)
+		 */
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		if (S.length == 0) return result;
 		Arrays.sort(S);
