@@ -12,15 +12,16 @@ import util.ListNode;
  * Analyze and describe its complexity.
  */
 
-public class MergeKSortedLists {	
-	Comparator<ListNode> comparator = new Comparator<ListNode>() {
-		public int compare(ListNode n1, ListNode n2) {
-			return n1.val - n2.val;
-		}
-	};
-	
+public class MergeKSortedLists {
 	public ListNode mergeKLists(List<ListNode> lists) {
 		if (lists.size() == 0) return null;
+		
+		Comparator<ListNode> comparator = new Comparator<ListNode>() {
+	        public int compare(ListNode n1, ListNode n2) {
+	            return n1.val - n2.val;
+	        }
+	    };
+		
 		PriorityQueue<ListNode> pq = new PriorityQueue<ListNode>(lists.size()*10, comparator);
     	ListIterator<ListNode> iter = lists.listIterator();
     	while (iter.hasNext()) {
