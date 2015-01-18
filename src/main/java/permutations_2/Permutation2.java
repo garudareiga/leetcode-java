@@ -20,7 +20,8 @@ public class Permutation2 {
          * Space Complexity: O(1)
          */
     	ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-        permuteUnique(num, 0, result);
+        Arrays.sort(num);
+    	permuteUnique(num, 0, result);
         return result;
     } 
     
@@ -32,13 +33,13 @@ public class Permutation2 {
     		return;
     	}
     	for (int q = p; q < num.length; q++) {
-    		if (containDuplicate(num, p, q)) continue; // or we can sort first
+    		if (containDuplicate(num, p, q)) continue;
     		swap(num, p, q);
     		permuteUnique(num, p + 1, result);
     		swap(num, p, q);
     	}
     }
-    
+        
     protected void swap(int[] num, int i, int j) {
     	int tmp = num[i]; num[i] = num[j]; num[j] = tmp;
     }
